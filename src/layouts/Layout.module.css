@@ -1,0 +1,30 @@
+.container_layout {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 1fr 10fr;
+}
+.container_layout > h1 {
+  color: #5f3dc4;
+  text-align: center;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  border-bottom: 0.1rem solid #adb5bd;
+  border-right: 0.1rem solid #adb5bd;
+}
+.none_layout {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  border-bottom: 0.1rem solid #adb5bd;
+}
+.nav_layout {
+  grid-row: 2/-1;
+  grid-column: 1/2;
+  border-right: 0.1rem solid #adb5bd;
+}
+.outlet_layout {
+  grid-column: 2/-1;
+  grid-row: 2/-1;
+  margin: 1rem 2rem 1rem 1rem;
+  position: relative;
+}

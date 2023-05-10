@@ -1,0 +1,28 @@
+.content_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+.nav_type > p {
+  margin-bottom: 1rem;
+}
+.nav_type > li {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+.nav_type > li > a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  color: #5f3dc4;
+}
+.nav_type > li > a:hover,
+.nav_type > li > a.active {
+  color: #1c7ed6;
+  opacity: 0.8;
+}
