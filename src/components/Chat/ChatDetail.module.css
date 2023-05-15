@@ -1,0 +1,83 @@
+.container__chatDetail {
+  position: relative;
+  height: 100%;
+}
+.content__chatDetail {
+  padding: 1rem;
+  height: 89%;
+  overflow-y: auto;
+}
+.form__chatDetail {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-top: 2px rgb(198, 198, 198) solid;
+  padding: 0 1rem;
+}
+.form__chatDetail > input {
+  height: 4rem;
+  width: 90%;
+  outline: none;
+  font-size: 1.2rem;
+  border: none;
+}
+.btn__submit {
+  display: flex;
+  padding: 0.5rem;
+  font-size: 2rem;
+  border-radius: 100rem;
+  border: none;
+  background-color: #22b8cf;
+  color: #fff;
+  cursor: pointer;
+}
+.btn__submit:hover {
+  opacity: 0.7;
+}
+/* ------------------------------chat content--------------------- */
+.container__message {
+  display: flex;
+  flex-direction: column;
+}
+.content__message {
+  max-width: 55%;
+  margin-bottom: 1rem;
+}
+.message__text {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.message__text_own {
+  justify-content: flex-end;
+}
+.icon__admin {
+  font-size: 1.5rem;
+}
+.message__text > p {
+  background-color: #f1f3f5;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.content__message > p:last-child {
+  font-size: 1rem;
+  color: gray;
+  margin: 0.2rem 0.5rem;
+}
+.content__message_own {
+  align-items: flex-end;
+}
+
+.content__message_own .message__text > p {
+  background-color: #339af0;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.content__message_own > div > p:last-child {
+  text-align: end;
+}

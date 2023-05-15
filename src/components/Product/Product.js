@@ -1,45 +1,49 @@
 import { useState, useEffect } from "react";
-import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
+import { useLoaderData, Link, useSubmit } from "react-router-dom";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
-import styles from "./Home.module.css";
-const Home = () => {
+import styles from "./Product.module.css";
+
+const Product = () => {
   const prodData = useLoaderData();
   const [isProducts, setIsProducts] = useState([]);
+  const [isProductsPaging, setIsProductsPaging] = useState([]);
   const [isPage, setIsPage] = useState(1);
-  // let products = prodData.products;
+  const submit = useSubmit();
+
+  useEffect(() => {
+    setIsProducts(prodData.products);
+  }, [prodData]);
   //-----------------------search------------------------------
   let timeoutId;
-
   const changInputHandler = (e) => {
     const searchText = e.target.value;
-
     // Hủy bỏ các setTimeout trước đó (nếu có)
     clearTimeout(timeoutId);
-
     // Thiết lập một setTimeout mới
     timeoutId = setTimeout(() => {
-      const productsSearch = prodData.products.filter((item) =>
+      const products = prodData.products.filter((item) =>
         item.name.toLowerCase().includes(searchText.toLowerCase())
       );
-      setIsProducts(productsSearch);
+      setIsProducts(products);
     }, 500);
   };
+
   // -------------------------paging--------------------------
-  const currentProd = 4;
-  const totalPage = Math.ceil(prodData.totalProduct / currentProd);
+  const currentProd = 8;
+  const totalPage = Math.ceil(isProducts.length / currentProd);
   useEffect(() => {
-    if (prodData.products.length > currentProd) {
+    if (isProducts.length > currentProd) {
       const startIndex = (isPage - 1) * currentProd;
       const endIndex = startIndex + currentProd;
-      const products = prodData.products.slice(startIndex, endIndex);
-      setIsProducts(products);
+      const products = isProducts.slice(startIndex, endIndex);
+      setIsProductsPaging(products);
     } else {
-      setIsProducts(prodData.products);
+      setIsProductsPaging(isProducts);
     }
-  }, [prodData, isPage]);
+  }, [isProducts, isPage]);
 
   const increasePageHandler = () => {
     if (isPage < totalPage) {
@@ -52,6 +56,13 @@ const Home = () => {
     }
   };
 
+  //----------------------delete product----------------
+  const deleteHander = (productId) => {
+    if (!window.confirm("Are you sure ?")) {
+      return;
+    }
+    submit({ productId: JSON.stringify(productId) }, { method: "DELETE" });
+  };
   return (
     <section className={styles.container__home}>
       <header className={styles.home__header}>
@@ -75,8 +86,8 @@ const Home = () => {
           </tr>
         </thead>
         <tbody className={styles.table__body}>
-          {isProducts &&
-            isProducts.map((item) => {
+          {isProductsPaging &&
+            isProductsPaging.map((item) => {
               return (
                 <tr key={item._id}>
                   <td>{item._id}</td>
@@ -88,8 +99,10 @@ const Home = () => {
                   <td>{item.category}</td>
                   <td>
                     <div className={styles.container__btn}>
-                      <button>Update</button>
-                      <button>Delete</button>
+                      <Link to={item._id}>Update</Link>
+                      <button onClick={deleteHander.bind(null, item._id)}>
+                        Delete
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -97,22 +110,20 @@ const Home = () => {
             })}
         </tbody>
       </table>
-      {isProducts.length > currentProd && (
-        <footer className={styles.container__footer}>
-          <MdKeyboardDoubleArrowLeft
-            onClick={decreasePageHandler}
-            className={styles.footer__icon}
-          />
-          <p>
-            {isPage}-{totalPage}
-          </p>
-          <MdKeyboardDoubleArrowRight
-            onClick={increasePageHandler}
-            className={styles.footer__icon}
-          />
-        </footer>
-      )}
+      <footer className={styles.container__footer}>
+        <MdKeyboardDoubleArrowLeft
+          onClick={decreasePageHandler}
+          className={styles.footer__icon}
+        />
+        <p>
+          {isPage}-{totalPage}
+        </p>
+        <MdKeyboardDoubleArrowRight
+          onClick={increasePageHandler}
+          className={styles.footer__icon}
+        />
+      </footer>
     </section>
   );
 };
-export default Home;
+export default Product;

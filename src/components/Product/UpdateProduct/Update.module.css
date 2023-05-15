@@ -1,0 +1,75 @@
+.newProduct__form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  padding: 1rem;
+  margin: 1rem 0;
+
+  box-shadow: 0 0 8px 3px #dfdfdf;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 1rem;
+}
+.newProduct__form label {
+  display: block;
+}
+.content__input > input,
+.content__input > textarea {
+  width: 100%;
+  outline: none;
+  border: 1px rgb(202, 202, 202) solid;
+}
+.content__input > input {
+  height: 2rem;
+  padding: 0 0.2rem;
+}
+.content__input > textarea {
+  resize: none;
+  padding: 0.2rem;
+}
+.content__input > label {
+  margin-bottom: 0.5rem;
+}
+
+.content__file > label {
+  margin: 0.5rem 0 0.2rem 0;
+}
+.content__img {
+  height: 8rem;
+  background-color: #fff;
+  margin: 0.8rem 0;
+  border: 1px rgb(202, 202, 202) solid;
+
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.box__img {
+  height: 100%;
+}
+.img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+.content__btn {
+  margin-top: 1rem;
+}
+.btn_submit {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #228be6;
+  color: #fff;
+
+  cursor: pointer;
+}
+.btn_submit:hover {
+  opacity: 0.8;
+}
+
+.input__error {
+  border: 1px solid red !important;
+}

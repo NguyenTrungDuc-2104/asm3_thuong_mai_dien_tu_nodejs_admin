@@ -56,19 +56,22 @@
   display: flex;
   gap: 0.8rem;
 }
-.container__btn > button {
+.container__btn > button,
+.container__btn > a {
   padding: 0.5rem 0.7rem;
   color: #fff;
   border: none;
   cursor: pointer;
 }
-.container__btn > button:hover {
+.container__btn > button:hover,
+.container__btn > a:hover {
   opacity: 0.5;
 }
-.container__btn > button:first-child {
+.container__btn > a {
   background-color: #69db7c;
+  text-decoration: none;
 }
-.container__btn > button:last-child {
+.container__btn > button {
   background-color: #fa5252;
 }
 /* ------------------------home footer----------------------- */

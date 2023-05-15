@@ -1,16 +1,28 @@
-import { NavLink } from "react-router-dom";
-import {
-  FaThLarge,
-  FaRegUser,
-  FaShapes,
-  FaRegWindowMaximize,
-  FaTruck,
-} from "react-icons/fa";
+import { useEffect } from "react";
+import { NavLink, useNavigate, useSubmit } from "react-router-dom";
+import { FaThLarge, FaShapes } from "react-icons/fa";
+import { BsFillChatDotsFill } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const submit = useSubmit();
+  const user = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user]);
+  //---------------------------logout handler------------------------
+  const logoutHandler = () => {
+    localStorage.removeItem("user");
+    submit(null, { method: "DELETE" });
+  };
+
   return (
     <nav className={styles.container_nav}>
       <ul className={styles.content_nav}>
@@ -24,7 +36,7 @@ const Navbar = () => {
               }
             >
               <FaThLarge />
-              <p>Products</p>
+              <p>Dashboard</p>
             </NavLink>
           </li>
         </div>
@@ -33,36 +45,25 @@ const Navbar = () => {
           <p>LIST</p>
           <li>
             <NavLink
-              to="/user"
+              to="/product"
               className={({ isActive }) =>
                 isActive ? styles.active : undefined
               }
             >
-              <FaRegUser />
-              <p>Users</p>
+              <FaShapes />
+              <p>Products</p>
             </NavLink>
           </li>
 
           <li>
             <NavLink
-              to="/room"
+              to="/chat"
               className={({ isActive }) =>
                 isActive ? styles.active : undefined
               }
             >
-              <FaRegWindowMaximize />
-              <p>Rooms</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/transaction"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
-              <FaTruck />
-              <p>Transactions</p>
+              <BsFillChatDotsFill />
+              <p>Message</p>
             </NavLink>
           </li>
         </div>
@@ -71,7 +72,7 @@ const Navbar = () => {
           <p>NEW</p>
           <li>
             <NavLink
-              to="/add_new_hotel"
+              to="/new_product"
               className={({ isActive }) =>
                 isActive ? styles.active : undefined
               }
@@ -83,17 +84,12 @@ const Navbar = () => {
         </div>
 
         <div className={styles.nav_type}>
-          <p>USER</p>
+          <p>USER ({user ? user.name : null})</p>
           <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? styles.active : undefined
-              }
-            >
+            <button className={styles.btn__logout} onClick={logoutHandler}>
               <RiLogoutBoxRLine />
               <p>Logout</p>
-            </NavLink>
+            </button>
           </li>
         </div>
       </ul>

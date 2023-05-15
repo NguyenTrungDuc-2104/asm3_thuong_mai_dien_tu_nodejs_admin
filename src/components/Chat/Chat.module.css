@@ -1,0 +1,36 @@
+.container__chat {
+  display: grid;
+  height: 78vh;
+  grid-template-columns: 1fr 3fr;
+}
+.container__chat_conversation {
+  padding-right: 0;
+  height: 100%;
+  border-right: 2px rgb(206, 206, 206) solid;
+  overflow-y: auto;
+  padding: 1rem;
+}
+.container__chat_conversation > a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+
+  color: #333;
+}
+.container__chat_conversation > a:hover,
+.container__chat_conversation > a.active {
+  color: #228be6;
+}
+.icon__conversation {
+  font-size: 1.8rem;
+  padding: 0.1rem 0.3rem;
+  background-color: #f8f9fa;
+  border-radius: 100rem;
+}
+.container__chat_message {
+  height: 100%;
+  overflow-y: auto;
+}
