@@ -1,10 +1,19 @@
+import { useEffect } from "react";
 import { useRouteError, useNavigate } from "react-router-dom";
 const ErrorPage = () => {
   const error = useRouteError();
   const navigate = useNavigate();
-  if (error.status === 401) {
-    navigate("/login");
-  }
-  console.log(error);
+  useEffect(() => {
+    if (error.status === 401) {
+      navigate("/login");
+    }
+  }, [error]);
+
+  return (
+    <>
+      <h1>{error.message}</h1>
+      <p>{error.status}</p>
+    </>
+  );
 };
 export default ErrorPage;

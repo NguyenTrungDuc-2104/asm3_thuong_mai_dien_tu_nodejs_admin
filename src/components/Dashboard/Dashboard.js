@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   return (
     <section className={styles.container__dashboard}>
-      {/* <h1>Dashboard</h1> */}
+      <h1>Dashboard</h1>
       <DashboardInfo
         data={{
           countUser: data.countUser,

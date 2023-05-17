@@ -19,8 +19,10 @@ const Navbar = () => {
   }, [user]);
   //---------------------------logout handler------------------------
   const logoutHandler = () => {
-    localStorage.removeItem("user");
-    submit(null, { method: "DELETE" });
+    if (window.confirm("Are you sure?")) {
+      localStorage.removeItem("user");
+      submit(null, { method: "DELETE" });
+    }
   };
 
   return (

@@ -30,6 +30,7 @@ export const action = async ({ request, params }) => {
     name: inputValue.get("productName"),
     category: inputValue.get("category"),
     price: inputValue.get("price"),
+    count: inputValue.get("count"),
     short_desc: inputValue.get("short_desc"),
     long_desc: inputValue.get("long_desc"),
   };

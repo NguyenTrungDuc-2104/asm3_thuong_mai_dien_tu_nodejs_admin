@@ -15,25 +15,28 @@
 .newProduct__form label {
   display: block;
 }
-.content__input > input,
-.content__input > textarea {
+.content__input input,
+.content__input textarea {
   width: 100%;
   outline: none;
   border: 1px rgb(202, 202, 202) solid;
 }
-.content__input > input {
+.content__input input {
   height: 2rem;
   padding: 0 0.2rem;
 }
-.content__input > textarea {
+.content__input textarea {
   resize: none;
   padding: 0.2rem;
 }
-.content__input > label {
+.content__input label {
   margin-bottom: 0.5rem;
 }
-
-.content__file > label {
+.content__input:nth-child(4) {
+  display: flex;
+  gap: 2rem;
+}
+.content__file label {
   margin: 0.5rem 0 0.2rem 0;
 }
 .content__img {

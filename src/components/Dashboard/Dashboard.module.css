@@ -1,6 +1,10 @@
 .container__dashboard {
   padding: 1rem;
 }
+.container__dashboard h1 {
+  color: #868e96;
+  margin-bottom: 1rem;
+}
 /* ---------------------dashboard info--------------------- */
 .container__info {
   display: flex;
@@ -13,7 +17,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: aqua; */
   padding: 2rem 1rem;
   box-shadow: 0 0 8px 5px rgb(240, 240, 240);
 }
@@ -37,6 +40,7 @@
 }
 .container__order > h3 {
   margin-bottom: 2rem;
+  color: #868e96;
 }
 .table__order {
   width: 100%;

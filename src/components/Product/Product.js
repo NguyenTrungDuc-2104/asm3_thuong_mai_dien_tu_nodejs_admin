@@ -82,6 +82,7 @@ const Product = () => {
             <td>Price</td>
             <td>Image</td>
             <td>Category</td>
+            <td>Count</td>
             <td>Edit</td>
           </tr>
         </thead>
@@ -97,6 +98,7 @@ const Product = () => {
                     <img src={item.img1} alt={item.name} />
                   </td>
                   <td>{item.category}</td>
+                  <td>{item.count}</td>
                   <td>
                     <div className={styles.container__btn}>
                       <Link to={item._id}>Update</Link>

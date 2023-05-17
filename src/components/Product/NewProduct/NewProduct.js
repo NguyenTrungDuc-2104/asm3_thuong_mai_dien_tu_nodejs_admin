@@ -28,6 +28,13 @@ const NewProduct = () => {
     valueChangeHandler: priceChangeValue,
   } = useInput((value) => value.trim() !== "");
   const {
+    value: countInputValue,
+    checkInput: countInputCheck,
+    hasError: countInputError,
+    onBlurInputHandler: countOnblurInput,
+    valueChangeHandler: countChangeValue,
+  } = useInput((value) => value.trim() !== "");
+  const {
     value: shortDescInputValue,
     checkInput: shortDescInputCheck,
     hasError: shortDescInputError,
@@ -65,6 +72,7 @@ const NewProduct = () => {
     formData.append("name", productNameInputValue);
     formData.append("category", categoryInputValue);
     formData.append("price", priceInputValue);
+    formData.append("count", countInputValue);
     formData.append("short_desc", shortDescInputValue);
     formData.append("long_desc", longDescInputValue);
 
@@ -101,12 +109,14 @@ const NewProduct = () => {
       !productNameInputCheck ||
       !categoryInputCheck ||
       !priceInputCheck ||
+      !countInputCheck ||
       !shortDescInputCheck ||
       !longDescInputCheck
     ) {
       productNameOnblurInput();
       categoryOnblurInput();
       priceOnblurInput();
+      countOnblurInput();
       shortDescOnblurInput();
       longDescOnblurInput();
       return;
@@ -149,17 +159,32 @@ const NewProduct = () => {
       </div>
 
       <div className={styles.content__input}>
-        <label htmlFor="price">Price</label>
-        <input
-          type="number"
-          name="price"
-          id="price"
-          placeholder="Enter Price"
-          value={priceInputValue}
-          onChange={priceChangeValue}
-          onBlur={priceOnblurInput}
-          className={priceInputError ? styles.input__error : null}
-        />
+        <div>
+          <label htmlFor="price">Price</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            placeholder="Enter Price"
+            value={priceInputValue}
+            onChange={priceChangeValue}
+            onBlur={priceOnblurInput}
+            className={priceInputError ? styles.input__error : null}
+          />
+        </div>
+        <div>
+          <label htmlFor="count">Count</label>
+          <input
+            type="number"
+            name="count"
+            id="count"
+            placeholder="Enter Count"
+            value={countInputValue}
+            onChange={countChangeValue}
+            onBlur={countOnblurInput}
+            className={countInputError ? styles.input__error : null}
+          />
+        </div>
       </div>
 
       <div className={styles.content__input}>
