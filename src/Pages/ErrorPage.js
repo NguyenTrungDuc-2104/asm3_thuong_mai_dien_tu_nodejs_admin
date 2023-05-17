@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import { useRouteError, useNavigate } from "react-router-dom";
+import { useRouteError, useNavigate, useSubmit } from "react-router-dom";
 const ErrorPage = () => {
   const error = useRouteError();
   const navigate = useNavigate();
+  const submit = useSubmit();
   useEffect(() => {
     if (error.status === 401) {
-      navigate("/login");
+      submit(null, { method: "DELETE", action: "/" });
+      // navigate("/login");
     }
   }, [error]);
 
