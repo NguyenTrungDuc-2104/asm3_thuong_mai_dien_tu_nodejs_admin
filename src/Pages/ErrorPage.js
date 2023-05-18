@@ -1,15 +1,14 @@
 import { useEffect } from "react";
-import { useRouteError, useNavigate, useSubmit } from "react-router-dom";
+import { useRouteError, useSubmit, useLocation } from "react-router-dom";
 const ErrorPage = () => {
   const error = useRouteError();
-  const navigate = useNavigate();
+  const location = useLocation();
   const submit = useSubmit();
   useEffect(() => {
-    if (error.status === 401) {
+    if (error.status === 401 && location.pathname !== "/login") {
       submit(null, { method: "DELETE", action: "/" });
-      // navigate("/login");
     }
-  }, [error]);
+  }, [error, location]);
 
   return (
     <>
