@@ -21,7 +21,7 @@ const Navbar = () => {
   const logoutHandler = () => {
     if (window.confirm("Are you sure?")) {
       localStorage.removeItem("user");
-      submit(null, { method: "DELETE" });
+      submit(null, { method: "DELETE", action: "/" });
     }
   };
 
