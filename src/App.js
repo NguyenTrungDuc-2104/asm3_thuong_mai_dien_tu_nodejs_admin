@@ -20,6 +20,7 @@ import UpdateProductPage, {
   loader as updateProductLoader,
   action as updateProductAction,
 } from "./Pages/UpdateProductPage";
+import NotFoundPage from "./Pages/NotFoundPage";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <RegisterPage />,
     action: registerAction,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 
