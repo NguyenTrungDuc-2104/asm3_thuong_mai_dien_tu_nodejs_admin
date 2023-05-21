@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Form, json, useLoaderData } from "react-router-dom";
+import { Form, json, useLoaderData, useParams } from "react-router-dom";
 import { IoIosSend } from "react-icons/io";
 import ChatContent from "./ChatContent";
 import { io } from "socket.io-client";
@@ -10,6 +10,8 @@ const ChatDetail = () => {
   const [isDataMessage, setIsDataMesage] = useState([]);
   const [isValueInputMessage, setIsValueInputMessage] = useState("");
   const [isDataSocket, setIsDataSocket] = useState();
+  const params = useParams();
+
   const scrollRef = useRef();
 
   const { message } = useLoaderData();
@@ -33,10 +35,12 @@ const ChatDetail = () => {
   //-------------------------soket io------------------------------
 
   useEffect(() => {
+    socket.emit("create_room", params.chatId);
     socket.on("send_message", (data) => {
       setIsDataSocket(data);
     });
-  }, []);
+  }, [params.chatId]);
+
   useEffect(() => {
     if (isDataSocket) {
       setIsDataMesage((prev) => [...prev, isDataSocket]);

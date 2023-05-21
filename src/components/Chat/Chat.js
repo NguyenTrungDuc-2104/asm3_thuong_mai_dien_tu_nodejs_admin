@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  useLoaderData,
-  NavLink,
-  Outlet,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { useLoaderData, NavLink, Outlet } from "react-router-dom";
 import { FcBusinessman } from "react-icons/fc";
 import { io } from "socket.io-client";
 import styles from "./Chat.module.css";
@@ -30,6 +24,7 @@ const Chat = () => {
       setIsDataConverSation((prev) => [...prev, isDataSocket]);
     }
   }, [isDataSocket]);
+
   return (
     <section className={styles.container__chat}>
       <article className={styles.container__chat_conversation}>
