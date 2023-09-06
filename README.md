@@ -13,4 +13,4 @@ III.Hướng dẫn
 1. Download source code
 2. Trong cửa sổ terminal chạy lệnh npm install để cài các package cần thiết
 3. Thiết lập file env:
-   - REACT_APP_API_URL=https://web-booking-server.onrender.com
+   - REACT_APP_API_URL=https://nodejs-asm3-server.onrender.com
