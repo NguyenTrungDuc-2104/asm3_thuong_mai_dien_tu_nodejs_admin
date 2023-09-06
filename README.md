@@ -8,3 +8,9 @@ II. Chức năng chính của project:
 - Xem danh sách các sản phẩm
 - Thêm, sửa, xóa sản phẩm
 - Chat realtime với khách hàng 
+
+III.Hướng dẫn
+1. Download source code
+2. Trong cửa sổ terminal chạy lệnh npm install để cài các package cần thiết
+3. Thiết lập file env:
+   - REACT_APP_API_URL=https://web-booking-server.onrender.com
