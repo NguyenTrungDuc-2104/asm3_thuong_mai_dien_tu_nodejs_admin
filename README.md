@@ -7,6 +7,7 @@ I. Giới thiệu project
 II. Chức năng chính của project:
 - Xem danh sách các sản phẩm
 - Thêm, sửa, xóa sản phẩm
+- Quản lý số lượng sản phẩm
 - Chat realtime với khách hàng 
 
 III.Hướng dẫn
